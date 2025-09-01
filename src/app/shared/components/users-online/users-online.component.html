@@ -1,0 +1,12 @@
+<div class="chat__sidebar">
+    <ul class="list-group">
+        <div *ngFor="let item of listUsers">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="item.socketID != connectionSer.db.getItem('userName')" (click)="selectUser(item)">
+                <span [class]="item.online ? 'badge bg-success rounded-pill' : 'badge bg-danger rounded-pill'">{{ item.userName }}</span>
+                <span class="badge bg-primary rounded-pill" *ngIf="item.nuevos_mensajes > 0">{{ item.nuevos_mensajes }}</span>
+            </li>
+        </div>
+        
+    </ul>
+</div>
+
