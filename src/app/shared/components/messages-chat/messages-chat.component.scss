@@ -4,7 +4,7 @@
     height: 82vh;
     background-color: #ffffff;
     flex: 0.2;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 20px;
 }
 
@@ -34,7 +34,7 @@
 }
 .message__status {
     position: fixed;
-    bottom: 9vh;
+    bottom: 10vh;
     font-size: 13px;
     font-style: italic;
 }

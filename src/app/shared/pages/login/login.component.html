@@ -4,20 +4,23 @@
         <div class="col-2"></div>
         <div class="col-">
             <div class="card">
-                <div class="card-header">
-                    Enter the chat
-                </div>
-                <div class="card-body"> 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <form [formGroup]="loginForm" (ngSubmit)="login($event)">
+                    <div class="card-header">
+                        Enter the chat
                     </div>
-                </div>
-                <div class="card-footer text-muted text-end">
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3">Enter</button>
+                    <div class="card-body"> 
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" formControlName="userName">
+                        </div>
                     </div>
-                </div>
+                    <div class="card-footer text-muted text-end">
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary mb-3" type="submit">Enter</button>
+                        </div>
+                    </div>
+                </form>
+                
             </div>
         </div>
         <div class="col-"></div>
