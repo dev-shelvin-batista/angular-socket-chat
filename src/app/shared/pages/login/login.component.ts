@@ -29,7 +29,6 @@ export class LoginComponent {
    */
   login = (e: Event) => {
     e.preventDefault();
-    console.log(this.loginForm.value.userName);
     if((this.loginForm.value.userName || '').trim() !== ""){
       this.connectionSer.db.setItem('userName', (this.loginForm.value.userName || ''));
       
