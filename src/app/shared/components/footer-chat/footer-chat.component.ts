@@ -27,17 +27,17 @@ export class FooterChatComponent implements OnInit {
       this.messageForm.get('message')?.valueChanges.subscribe(nameValue => {
         
         this.socket.emit('typing', {
-          user: this.connectionSer.db.getItem('userName'),
+          user: this.connectionSer.db.getItem('userNameAngular'),
           text: `Typing...`
         });
       });
   }
 
   /**
-     * Metodo para notificar un nuevo mensaje
-     * 
-     * @param e Evento del formulario
-     */
+   * Method for notifying a new message
+   * 
+   * @param e Form event
+   */
   sendMessage = (e: Event) => {
     e.preventDefault();
 
@@ -51,18 +51,18 @@ export class FooterChatComponent implements OnInit {
       let minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
       let currentDate = `${year}-${month}-${day} ${hour}:${minute}`;
 
-      let listUsers = JSON.parse(this.connectionSer.db.getItem("listado_usuarios") || "[]");
-      const user = listUsers.find((user:any) => user.socketID === this.messagesSer.usuarioSeleccionado);
+      let listUsers = JSON.parse(this.connectionSer.db.getItem("list_usersAngular") || "[]");
+      const user = listUsers.find((user:any) => user.socketID === this.messagesSer.userSelected);
 
       obj_message = {
         text: this.messageForm.value.message,
         date: currentDate,
-        sender: this.connectionSer.db.getItem('userName'),
-        to: this.messagesSer.usuarioSeleccionado
+        sender: this.connectionSer.db.getItem('userNameAngular'),
+        to: this.messagesSer.userSelected
       }
 
       user.messages.push(obj_message)
-      this.connectionSer.db.setItem('listado_usuarios', JSON.stringify(listUsers)); 
+      this.connectionSer.db.setItem('list_usersAngular', JSON.stringify(listUsers)); 
 
       
       this.messagesSer.messages.push(obj_message)

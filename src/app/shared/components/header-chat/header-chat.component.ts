@@ -20,7 +20,7 @@ export class HeaderChatComponent {
     private alertSer: AlertsService  ) {}
 
   /**
-   * Método para cerrar la sesión y salir del chat
+   * Method for logging out and exiting the chat
    */
   logOut = () => {
     this.alertSer.openAlert(
@@ -28,8 +28,8 @@ export class HeaderChatComponent {
       "¿Desea cerrar sesión?",
       "Si",
       () => {
-        this.socket.emit('disconnectUser', { userName: this.connectionSer.db.getItem("userName"), socketID: this.connectionSer.db.getItem("userName") });
-        this.connectionSer.db.removeItem('userName');
+        this.socket.emit('disconnectUser', { userName: this.connectionSer.db.getItem("userNameAngular"), socketID: this.connectionSer.db.getItem("userNameAngular") });
+        this.connectionSer.db.removeItem('userNameAngular');
         this.router.navigate(['/login'], { relativeTo: this.activatedRoute });
       },
       "No"
