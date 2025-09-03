@@ -3,6 +3,7 @@ import { ConnectionService } from '../../../intranet/connection.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MessagesService } from '../../../core/services/messages.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
     private connectionSer: ConnectionService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private socket: Socket
+    private socket: Socket,
+    public messagesSer: MessagesService
   ){ }
 
   /**
@@ -31,6 +33,9 @@ export class LoginComponent {
     e.preventDefault();
     if((this.loginForm.value.userName || '').trim() !== ""){
       this.connectionSer.db.setItem('userNameAngular', (this.loginForm.value.userName || ''));
+
+      this.messagesSer.userSelected = '';
+      this.messagesSer.messages = [];
       
       this.socket.emit('newUserLogin', { userName: this.loginForm.value.userName, socketID: this.loginForm.value.userName, online: true}); 
       this.router.navigate(['/home'], { relativeTo: this.activatedRoute });

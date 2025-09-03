@@ -3,6 +3,7 @@ import { ConnectionService } from '../../../intranet/connection.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { AlertsService } from '../../../core/utils/alerts.service';
+import { MessagesService } from '../../../core/services/messages.service';
 
 @Component({
   selector: 'app-header-chat',
@@ -17,7 +18,9 @@ export class HeaderChatComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private socket: Socket,
-    private alertSer: AlertsService  ) {}
+    private alertSer: AlertsService,
+    public messagesSer: MessagesService  
+  ) {}
 
   /**
    * Method for logging out and exiting the chat
@@ -30,6 +33,8 @@ export class HeaderChatComponent {
       () => {
         this.socket.emit('disconnectUser', { userName: this.connectionSer.db.getItem("userNameAngular"), socketID: this.connectionSer.db.getItem("userNameAngular") });
         this.connectionSer.db.removeItem('userNameAngular');
+        this.messagesSer.userSelected = '';
+        this.messagesSer.messages = [];
         this.router.navigate(['/login'], { relativeTo: this.activatedRoute });
       },
       "No"
