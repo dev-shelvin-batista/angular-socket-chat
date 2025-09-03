@@ -29,7 +29,7 @@ export class UsersOnlineComponent implements OnInit {
         const exist:any = list.find((user:any) => user.socketID === item.userName);
         if(!exist){
           list.push({
-            userName: item.userName, socketID: item.socketID, nuevos_mensajes: 0, online: item.online, messages: []
+            userName: item.userName, socketID: item.socketID, new_messages: 0, online: item.online, messages: []
           })
         } else {
           exist.online = item.online;
@@ -40,7 +40,7 @@ export class UsersOnlineComponent implements OnInit {
         user.online = data.user.online
       }else{
         list.push({
-          userName: data.user.userName, socketID: data.user.socketID, nuevos_mensajes: 0, online: data.user.online, messages: []
+          userName: data.user.userName, socketID: data.user.socketID, new_messages: 0, online: data.user.online, messages: []
         })
       }
       this.listUsers = [...list];
@@ -55,7 +55,7 @@ export class UsersOnlineComponent implements OnInit {
       const user = list.find((user:any) => user.socketID === data.sender);
 
       if(this.messagesSer.userSelected === ""){
-        user.nuevos_mensajes += 1
+        user.new_messages += 1
       }
 
       user.messages.push({
@@ -88,13 +88,13 @@ export class UsersOnlineComponent implements OnInit {
   selectUser = (row:any) => {
     this.messagesSer.userSelected = row.socketID;
 
-    row.nuevos_mensajes = 0;
+    row.new_messages = 0;
     
     let listUsers = JSON.parse(this.connectionSer.db.getItem("list_usersAngular") || "[]");
 
     listUsers.map((item:any) => {
       if(item.socketID == this.messagesSer.userSelected) {
-        item.nuevos_mensajes = 0;
+        item.new_messages = 0;
         this.messagesSer.messages = [...item.messages]
       }
     })

@@ -3,7 +3,7 @@
         <div *ngFor="let item of listUsers">
             <li class="list-group-item d-flex justify-content-between align-items-center" *ngIf="item.socketID != connectionSer.db.getItem('userNameAngular')" (click)="selectUser(item)">
                 <span [class]="item.online ? 'badge bg-success rounded-pill' : 'badge bg-danger rounded-pill'">{{ item.userName }}</span>
-                <span class="badge bg-primary rounded-pill" *ngIf="item.nuevos_mensajes > 0">{{ item.nuevos_mensajes }}</span>
+                <span class="badge bg-primary rounded-pill" *ngIf="item.new_messages > 0">{{ item.new_messages }}</span>
             </li>
         </div>
         
