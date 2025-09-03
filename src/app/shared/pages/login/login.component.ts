@@ -23,14 +23,14 @@ export class LoginComponent {
   ){ }
 
   /**
-   * Método para realizar el inicio de sesión y enviar la notificación del usuario conectadose
+   * Method for logging in and sending the user connection notification
    * 
    * @param e 
    */
   login = (e: Event) => {
     e.preventDefault();
     if((this.loginForm.value.userName || '').trim() !== ""){
-      this.connectionSer.db.setItem('userName', (this.loginForm.value.userName || ''));
+      this.connectionSer.db.setItem('userNameAngular', (this.loginForm.value.userName || ''));
       
       this.socket.emit('newUserLogin', { userName: this.loginForm.value.userName, socketID: this.loginForm.value.userName, online: true}); 
       this.router.navigate(['/home'], { relativeTo: this.activatedRoute });

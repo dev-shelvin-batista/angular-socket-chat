@@ -1,6 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ConnectionService } from '../../../intranet/connection.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { MessagesService } from '../../../core/services/messages.service';
 
@@ -16,8 +15,6 @@ export class MessagesChatComponent implements OnInit {
 
   constructor(
     public connectionSer: ConnectionService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     private socket: Socket,
     public messagesSer: MessagesService
   ){
@@ -26,7 +23,7 @@ export class MessagesChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.socket.on('typingResponse', (data) => {
-      if(this.messagesSer.usuarioSeleccionado == data.user){
+      if(this.messagesSer.userSelected == data.user){
         this.typingStatus = data.text;
       }
       setTimeout(() => {
@@ -40,7 +37,7 @@ export class MessagesChatComponent implements OnInit {
   }
 
   /**
-   * Método para ejecutar el scroll hasta el final
+   * Method for scrolling to the end
    */
   scrollToBottom(): void {
     try {
@@ -48,10 +45,10 @@ export class MessagesChatComponent implements OnInit {
     } catch(err) { }
   }
 
-  // Evento del teclado con la tecla Escape que permite cerrar el chat actual
+  // Keyboard event with the Escape key that closes the current chat
   @HostListener('window:keydown.escape', ['$event'])
   handleEscapeKey(event: KeyboardEvent) {
     this.messagesSer.messages = []
-    this.messagesSer.usuarioSeleccionado = '';
+    this.messagesSer.userSelected = '';
   }
 }
