@@ -12,14 +12,14 @@ export class AlertsService {
   ) { }
 
   /**
-   * Metodo para generar un modal como alerta.
+   * Method for generating a modal as an alert.
    *
-   * @param   {string}    title           Titulo a mostrar
-   * @param   {string}    description     Descripcion
-   * @param   {string}    textButtonOk      Texto del botón Aceptar
-   * @param   {Function}  functionButtonOk  Metodo a ejecutarse en el evento clic del boton Aceptar del modal antes de cerrarse
-   * @param   {string}    textButtonCancel      Texto del botón Cancelar
-   * @param   {Function}  functionButtonCancel  Metodo a ejecutarse en el evento clic del boton Aceptar del modal antes de cerrarse
+   * @param   {string}    title           Title to display
+   * @param   {string}    description     Description
+   * @param   {string}    textButtonOk      Text on the Accept button
+   * @param   {Function}  functionButtonOk  Method to be executed when the OK button in the modal is clicked before closing
+   * @param   {string}    textButtonCancel      Cancel button text
+   * @param   {Function}  functionButtonCancel  Method to be executed when the OK button in the modal is clicked before closing.
    *
    */
   openAlert = (title:string, description: string, textButtonOk = '', functionButtonOk: Function = () => {}, textButtonCancel = '', functionButtonCancel: Function = () => {}) => {

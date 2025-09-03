@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class MessagesService {
   messages:any = [];
-  usuarioSeleccionado = '';
+  userSelected = '';
 
   constructor() { }
 }

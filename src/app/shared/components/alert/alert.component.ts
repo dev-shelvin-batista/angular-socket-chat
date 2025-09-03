@@ -18,18 +18,24 @@ export class AlertComponent {
   @Input() functionButtonCancel: Function = () => {}
 
   /**
-   * Metodo para cerrar el modal de alerta. Se ejecuta primero un metodo que recibe el componente y despues se cierra el modal.
+   * Method to close the alert modal. First, a method that receives the component is executed, and then the modal is closed.
    *
    */
   async closeModal() {
     this.activeModal.close('Modal Closed');
   }
 
+  /**
+   * Method to execute the function of the OK button sent as a parameter to the component
+   */
   async fnButtonOk() {
     await this.functionButtonOk();
     await this.closeModal();
   }
 
+  /**
+   * Method to execute the cancel button function sent as a parameter to the component
+   */
   async fnButtonCancel() {
     await this.functionButtonCancel();
     await this.closeModal();

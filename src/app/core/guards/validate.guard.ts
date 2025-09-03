@@ -5,7 +5,7 @@ import { ConnectionService } from '../../intranet/connection.service';
 
 /**
  * 
- * Guard que permite validar si han ingresado usuario o no dependiendo de la url
+ * Guard that allows you to validate whether a user has logged in or not depending on the URL
  * 
  * @param route 
  * @param state 
@@ -16,12 +16,12 @@ export const validateGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if(state.url === '/login'){
-    if(connectionSer.db.getItem("userName")) {
+    if(connectionSer.db.getItem("userNameAngular")) {
       return router.navigate(['/home']);
     }
   }
   if(state.url === '/home'){
-    if(!connectionSer.db.getItem("userName")) {
+    if(!connectionSer.db.getItem("userNameAngular")) {
       return router.navigate(['/login']);
     }
   }

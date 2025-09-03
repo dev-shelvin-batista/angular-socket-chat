@@ -9,20 +9,20 @@ export class ConnectionService {
   constructor() { }
 
   /**
-   * Método para realizar la conexión al local storage. Además se inician los valores si no estan creados y se crean los valores iniciales de los estados.
-   * @returns Promesa con los datos del local storage
+   * Method for connecting to local storage. In addition, values are initialized if they have not been created, and initial values for states are created.
+   * @returns Promise with local storage data
    */
   connectDB = async(): Promise<any> => {
     return new Promise(async (resolve) => {
       try {
         this.db = localStorage;
 
-        // Verificar si existen los valores en el local storage del navegador para inicializarlos. Esto sucede cuando se abre la app por primera vez
-        if(this.db.getItem("userName") === '[]' || this.db.getItem("userName") === null){
-          this.db.setItem("userName", "");
+        // Check if the values exist in the browser's local storage to initialize them. This happens when the app is opened for the first time.
+        if(this.db.getItem("userNameAngular") === '[]' || this.db.getItem("userNameAngular") === null){
+          this.db.setItem("userNameAngular", "");
         }
-        if(this.db.getItem("listado_usuarios") === '[]' || this.db.getItem("listado_usuarios") === null){
-          this.db.setItem("listado_usuarios", JSON.stringify([]));
+        if(this.db.getItem("list_usersAngular") === '[]' || this.db.getItem("list_usersAngular") === null){
+          this.db.setItem("list_usersAngular", JSON.stringify([]));
         }
         resolve(this.db);     
       } catch (e) {
