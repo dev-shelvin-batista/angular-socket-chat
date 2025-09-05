@@ -27,9 +27,9 @@ export class HeaderChatComponent {
    */
   logOut = () => {
     this.alertSer.openAlert(
-      "Confirmación", 
-      "¿Desea cerrar sesión?",
-      "Si",
+      "Confirmation", 
+      "Do you want to log out?",
+      "Yes",
       () => {
         this.socket.emit('disconnectUser', { userName: this.connectionSer.db.getItem("userNameAngular"), socketID: this.connectionSer.db.getItem("userNameAngular") });
         this.connectionSer.db.removeItem('userNameAngular');
