@@ -1,5 +1,7 @@
 # Project details
 
+Application to generate a chat with Angular connecting to socket private channels of a backend development project in NodeJS.
+
 |                |Version							|
 |----------------|-------------------------------|
 |Angular|`19.2.15`            |
