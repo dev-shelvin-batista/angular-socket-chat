@@ -8,6 +8,10 @@ Application to generate a chat with Angular connecting to socket private channel
 |NPM          |`11.5.2`            |
 |Node.js          |`22.14.0`|
 
+## Important note 
+
+The source code documentation and project structure were generated using the compodoc library, which generates a static web page that can be deployed on a server. In this case, it was deployed on GitHub. [Documentation](https://dev-shelvin-batista.github.io/angular-socket-chat/)
+
 ## Instructions
 
 To run the frontend project, follow these steps:
