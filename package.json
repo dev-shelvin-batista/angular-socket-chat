@@ -10,7 +10,7 @@
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s",
-    "documentation": "compodoc -p tsconfig.doc.json -w -s --theme laravel -n Angular-Chat-Socket --hideGenerator"
+    "documentation": "compodoc -p tsconfig.doc.json -w -s --theme laravel -n Angular-Chat-Socket -d docs --hideGenerator"
   },
   "private": true,
   "dependencies": {
