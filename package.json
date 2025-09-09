@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s",
+    "documentation": "compodoc -p tsconfig.doc.json -w -s --theme laravel -n Angular-Chat-Socket --hideGenerator"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +35,7 @@
     "@angular/cli": "^19.2.11",
     "@angular/compiler-cli": "^19.2.0",
     "@angular/localize": "^19.2.0",
+    "@compodoc/compodoc": "^1.1.30",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
